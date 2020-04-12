@@ -1,0 +1,31 @@
+{
+  "name": "stream-to-sw",
+  "version": "1.0.0",
+  "description": "intercept fetch requests with a service worker, but process the response on the main thread",
+  "dependencies": {
+    "get-stdin": "^7.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^16.0.0",
+    "muggle-assert": "^1.1.3",
+    "muggle-test": "^1.0.0",
+    "standard": "^14.0.1",
+    "tap-spec": "^5.0.0",
+    "tape-run": "^7.0.0"
+  },
+  "scripts": {
+    "script-tests": "npm run generate-test-worker && browserify test.js | tape-run --static ./ | tap-spec",
+    "test": "standard && npm run cli-tests && npm run script-tests",
+    "generate-test-worker": "echo \"path => path.startsWith('/test')\" | ./cli.js > testWorker.js",
+    "cli-tests": "node testCli.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KayleePop/stream-to-sw"
+  },
+  "author": "KayleePop",
+  "license": "MIT",
+  "bin": {
+    "stream-to-sw": "./cli.js"
+  }
+}
