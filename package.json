@@ -14,7 +14,7 @@
     "tape-run": "^7.0.0"
   },
   "scripts": {
-    "script-tests": "npm run generate-test-worker && browserify test.js | tape-run --static ./ | tap-spec",
+    "script-tests": "npm run generate-test-worker && browserify test.js | tape-run --static ./ --browser firefox | tap-spec",
     "test": "standard && npm run cli-tests && npm run script-tests",
     "generate-test-worker": "echo \"path => path.startsWith('/test')\" | ./cli.js > testWorker.js",
     "cli-tests": "node testCli.js | tap-spec"

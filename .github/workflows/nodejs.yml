@@ -18,6 +18,7 @@ jobs:
       with:
         node-version: lts/*
     - run: sudo apt-get install xvfb
+    - run: sudo apt-get install firefox
     - run: npm install
     - run: xvfb-run --auto-servernum npm test
       env:
