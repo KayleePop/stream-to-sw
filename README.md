@@ -43,7 +43,7 @@ async function main () {
     }
   })
 
-  // create video tag after await, to make sure the fecth is intercepted
+  // create video tag after await, to make sure the fetch is intercepted
   document.body.innerHTML = `<video src="/prefix/video.mp4"></video>`
 
   const response = await fetch('/prefix/ping')
