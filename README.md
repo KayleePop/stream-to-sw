@@ -68,7 +68,7 @@ Stdin is used to replace the [arrow function here](./worker.js#L33) which determ
 #### Intercept Function
 `(path, request) => !!shouldIntercept`
 
-The path argument is `request.url` but stripped of the origin (so it starts with `/` instead of `http://`).
+The path argument is `request.url` but stripped of the protocol, host, query params, hash, and any trailing slash (so like `/folder/file.txt` instead of `https://website.com/folder/file.txt#Header`). This is the same as `request.path`
 
 The request argument is `fetchEvent.request` as it exists in the serviceWorker (this intercept function runs on the service worker directly)
 
@@ -115,6 +115,8 @@ The properties: 'method', 'mode', 'url', 'credentials', 'cache', 'context', 'des
 'headers' is also included, but as a plain associative array instead of a `Header` object
 
 'body' is also resolved and included as a blob
+
+`request.path` is also included, which is `request.url` but stripped of the host, protocol, query params, hash, and any trailing slash (so like `/folder/file.txt` instead of `https://website.com/folder/file.txt#Header`). This is the same as the `path` variable passed into the cli intercept function.
 
 #### response
 

@@ -40,7 +40,10 @@ self.addEventListener('fetch', (e) => {
   (path, request) => false
   // CLI REPLACE END
 
-  const path = request.url.replace(self.origin, '')
+  let path = request.url.replace(self.origin, '') // trim protocol and host
+  path = path.replace(/#.*$/, '') // trim hash
+  path = path.replace(/\?.*$/) // trim query params
+  path = path.replace(/\/$/, '') // trim trailing slash if present
 
   if (!shouldIntercept(path, request)) {
     return // let request be handled by normal fetch
@@ -135,6 +138,9 @@ self.addEventListener('fetch', (e) => {
 
     // send body as blob, which minimizes postMessage overhead (only a pointer to data will be sent)
     plainRequest.body = await request.blob()
+
+    // include trimmed path
+    plainRequest.path = path
 
     // send request data to window
     // this is the req object in registerStreamToSw('/worker.js', (req, res) => {})
