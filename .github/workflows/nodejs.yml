@@ -10,13 +10,13 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v2
-    - name: Set up node using nvm
-      uses: dcodeIO/setup-node-nvm@v3.0.0
+    - name: Set up node
+      uses: actions/setup-node@v1
       with:
-        node-version: lts/*
+        node-version: '*'
     - run: sudo apt-get install xvfb
     - run: sudo apt-get install firefox
     - run: npm install
