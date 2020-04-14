@@ -103,11 +103,9 @@ module.exports = async function registerStreamToSw (workerPath, requestHandler) 
       // if nothing is returned from the handler, set it to an empty array
       let asyncIterator = await requestHandler(req, res) || []
 
+      // if string is returned, pass it as an array of one ArrayBuffer
       if (typeof asyncIterator === 'string') {
-        asyncIterator =
-          asyncIterator
-            .split(/(?=\n)/) // split into array of lines (regex splits without removing the newlines)
-            .map(line => new TextEncoder().encode(line)) // convert to Uint8Arrays
+        asyncIterator = [new TextEncoder().encode(asyncIterator)]
       }
 
       // send metadata after the requestHandler resolves

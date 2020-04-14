@@ -106,7 +106,7 @@ If in doubt, place the worker file in the site's root so it can intercept all fe
 
 Anything that works in a [for await loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of) will work, so normal arrays/iterators are fine. However, the iterator's values must be [TypedArrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays) in order to work with the readableStream used for the Response. (node Buffers are typedArrays)
 
-A plain string can be also be returned from the requestHandler, and it will be automatically converted into an array of Uint8Arrays (one for each line) using [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder)
+A plain string can be also be returned from the requestHandler, and it will be automatically converted into an arrayBuffer using [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder)
 
 If nothing is returned, the response body is empty.
 
