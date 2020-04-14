@@ -60,6 +60,10 @@ Since all windows under the serviceWorker's scope are pinged, there's no guarent
 
 This pinging also allows tabs and iframes to have their intercepted fetch requests processed on a different thread. This means that an iframe can have its src intercepted by its parent window, and a requestHandler singleton could be registered that still processes requests for all tabs.
 
+## Example projects
+
+[Magnet-web: a webtorrent viewer that allows hosting of websites](https://github.com/kayleepop/magnet-web)
+
 ## API
 
 ### CLI
