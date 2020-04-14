@@ -24,9 +24,7 @@ async function * countDownFrom10 () {
 }
 
 const readyPromise = registerStreamToSw('./testWorker.js', async (req, res) => {
-  const path = req.url.replace(window.origin, '')
-
-  switch (path) {
+  switch (req.path) {
     case '/test/penguin': {
       return 'penguin'
     }
@@ -54,6 +52,9 @@ const readyPromise = registerStreamToSw('./testWorker.js', async (req, res) => {
     case '/test/reqJson': {
       req.headers['content-type'] = 'text/json'
       return JSON.stringify(req)
+    }
+    case '/test/reqPath': {
+      return req.path
     }
     case '/test/requestBody': {
       const body = await new window.Response(req.body).text()
@@ -150,6 +151,15 @@ test('request properties should be passed correctly', async () => {
       `Req.headers[${key}] should equal fetch(Request.headers[${key}])`
     )
   }
+})
+
+test('request.path should be set correctly', async () => {
+  await readyPromise
+
+  const plainPathResponse = await window.fetch('/test/reqPath?param=true#hash')
+  const plainPath = await plainPathResponse.text()
+
+  assert.equal(plainPath, '/test/reqPath', 'path should strip origin, query params, and hash')
 })
 
 test('body should be passed into the Req object', async () => {
