@@ -42,7 +42,7 @@ self.addEventListener('fetch', (e) => {
 
   let path = request.url.replace(self.origin, '') // trim protocol and host
   path = path.replace(/#.*$/, '') // trim hash
-  path = path.replace(/\?.*$/) // trim query params
+  path = path.replace(/\?.*$/, '') // trim query params
   path = path.replace(/\/$/, '') // trim trailing slash if present
 
   if (!shouldIntercept(path, request)) {
