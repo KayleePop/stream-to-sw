@@ -11,7 +11,7 @@
     "muggle-test": "^1.0.0",
     "standard": "^14.0.1",
     "tap-spec": "^5.0.0",
-    "tape-run": "^7.0.0"
+    "tape-run": "^8.0.0"
   },
   "scripts": {
     "script-tests": "npm run generate-test-worker && browserify test.js | tape-run --static ./ --browser firefox | tap-spec",
