@@ -8,7 +8,7 @@
   "devDependencies": {
     "browserify": "^16.0.0",
     "muggle-assert": "^1.1.3",
-    "muggle-test": "^1.0.0",
+    "muggle-test": "^2.0.0",
     "standard": "^14.0.1",
     "tap-spec": "^5.0.0",
     "tape-run": "^7.0.0"
