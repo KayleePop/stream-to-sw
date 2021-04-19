@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "intercept fetch requests with a service worker, but process the response on the main thread",
   "dependencies": {
-    "get-stdin": "^8.0.0"
+    "get-stdin": "^9.0.0"
   },
   "devDependencies": {
     "browserify": "^17.0.0",
