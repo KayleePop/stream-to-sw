@@ -67,7 +67,7 @@ This pinging also allows tabs and iframes to have their intercepted fetch reques
 ## API
 
 ### CLI
-Stdin is used to replace the [arrow function here](./worker.js#L33) which determines whether a fetch request should be intercepted and sent as a `request` event or allowed to be sent as a normal HTTP request.
+Stdin is used to replace the [arrow function here](./worker.js#L38) which determines whether a fetch request should be intercepted and sent as a `request` event or allowed to be sent as a normal HTTP request.
 
 #### Intercept Function
 `(path, request) => !!shouldIntercept`
